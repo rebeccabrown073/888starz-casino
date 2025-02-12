@@ -292,6 +292,11 @@ h3 {
     text-align: center;
     text-transform: uppercase;
 }
+#ad .h3_title {
+    color: var(--gold-btn, #ef9b08);
+    text-align: center;
+    text-transform: uppercase;
+}
 
 /* ogl */
 
