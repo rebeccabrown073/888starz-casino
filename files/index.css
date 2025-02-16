@@ -864,7 +864,8 @@ h4 {
     .promo span,
     .get_bonus,
     h2,
-    .plane h2,
+    .h2_title,
+    .plane .h2_title,
     .rating span {
         font-size: 24px;
     }
@@ -972,7 +973,8 @@ h4 {
         padding: 40px 0;
     }
     h2,
-    .plane h2,
+    .h2_title,
+    .plane .h2_title,
     .std_text,
     .container .rating_section,
     .link,
@@ -1125,7 +1127,8 @@ h4 {
     .promo span,
     .get_bonus,
     h2,
-    .plane h2,
+    .h2_title,
+    .plane .h2_title,
     .rating span {
         font-size: 20px;
     }
