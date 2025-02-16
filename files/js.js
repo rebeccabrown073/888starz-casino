@@ -9,24 +9,15 @@ $(document).ready(function () {
 
     // slider
     let activeEl = $(".slide1");
-    setInterval(function () {
-        if (activeEl.next(".slide_block").length == 1) {
-            let currentEl = activeEl;
-            setTimeout(() => {
-                currentEl.toggleClass("showed");
-            }, 800);
-            activeEl.next(".slide_block").toggleClass("showed");
-            activeEl = activeEl.next(".slide_block");
-        } else {
-            let currentEl = activeEl;
-            setTimeout(() => {
-                currentEl.toggleClass("showed");
-            }, 800);
-            $(".slide1").toggleClass("showed");
-            activeEl = $(".slide1");
-        }
-    }, 6000);
-
+setInterval(function () {
+    let currentEl = activeEl;
+    setTimeout(() => {
+        currentEl.removeClass("showed");
+    }, 800);
+    activeEl = activeEl.next(".slide_block").length ? activeEl.next(".slide_block") : $(".slide1");
+    activeEl.addClass("showed");
+}, 6000);
+	
     // chips
     if ($(window).width() > 1024) {
         $(document).on("mousemove", function (e) {
