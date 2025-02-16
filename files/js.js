@@ -20,23 +20,23 @@ setInterval(function () {
 	
     // chips
     if ($(window).width() > 1024) {
-        $(document).on("mousemove", function (e) {
-            let x = e.pageX / window.innerWidth;
-            let y = e.pageY / window.innerHeight;
-            $(".chip_back").css(
-                "transform",
-                "translate(-" + x * 20 + "px, -" + y * 20 + "px)"
-            );
-        });
-    }
+    let request;
+    $(document).on("mousemove", function (e) {
+        if (!request) {
+            request = requestAnimationFrame(() => {
+                let x = e.pageX / window.innerWidth;
+                let y = e.pageY / window.innerHeight;
+                $(".chip_back").css("transform", `translate(-${x * 20}px, -${y * 20}px)`);
+                request = null;
+            });
+        }
+    });
+}
 
     // gamburger
-    $(".gam_menu").on("click", function () {
-        $(".gam_block").toggleClass("active");
-    });
-    $(".cross").on("click", function () {
-        $(".gam_block").toggleClass("active");
-    });
+$(".gam_menu, .cross").on("click", function () {
+    $(".gam_block").toggleClass("active");
+});
 
     // scrollTop
     $(window).scroll(function () {
@@ -57,13 +57,14 @@ setInterval(function () {
     });
 
     // anchor
-    $(".ogl_block a").click(function (e) {
-        let query = $(this).attr("href");
-        $("html,body")
-            .stop()
-            .animate({ scrollTop: $(query).offset().top }, 800);
-        e.preventDefault();
-    });
+$(".ogl_block a").click(function (e) {
+    let query = $(this).attr("href");
+    let target = $(query);
+    if (target.length) {
+        $("html,body").stop().animate({ scrollTop: target.offset().top }, 800);
+    }
+    e.preventDefault();
+});
 	
 	// When the user scrolls the page, execute myFunction
 	window.onscroll = function() {myFunction()};
